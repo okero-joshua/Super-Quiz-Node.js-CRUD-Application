@@ -1,0 +1,46 @@
+<%- include('partials/header.ejs') %>
+
+  <div class="container">
+  
+<h2>Answer a question</h2>
+
+    <p><span id=score></span></p>
+  <p><%=question[0].question_text%></p>  
+    <input type="hidden" name=question_id id=question_id value="<%=question[0].question_id%>">
+    <input type=hidden name=username id=username value="<%=users[0].username%>">
+    <form>
+    <% for(let i = 0; i < 4; ++i){ %>
+      
+    <input type=radio name="answer" class="answer" id="answer<%=i%>" value='<%=answers[0][i].answer%>'>
+      <label id="radioChoice" for="answer<%=i%>"><%=answers[0][i].answer%></label>
+      <br>
+    <% } %>
+    </form>
+      <div id="submitAnswer">
+      <button id="answerButton">
+        Submit answer
+      </button>
+      </div>
+    
+      <form action="/answer" method=get id="newQuestion">
+        <input type=hidden name=username value="<%=users[0].username%>">
+        <button>
+          New Question
+        </button>
+      </form>
+
+      <div id="result"></div>
+
+      </div>
+      <script src="/js/answer.js"></script>
+<script>
+      document.querySelector("#answerButton").addEventListener('click', async () => {
+        const response = await fetch('/api/score/<%=users[0].username%>');
+        let data = await response.json();
+        document.querySelector("#score").innerHTML = "Score: ";
+        document.querySelector("#score").innerHTML += data.score;
+      });
+     
+  </script>
+
+<%- include('partials/footer.ejs') %>

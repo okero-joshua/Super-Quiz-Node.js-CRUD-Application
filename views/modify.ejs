@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs') %>
+
+  <div class="container">
+
+<p>Modify User: <%= users[0].username %></p>
+
+  <form action="/modify" method="post">
+      <input type="hidden" name="username" value="<%=users[0].username%>">
+      Name: 
+      <input type=text name=firstName value="<%=users[0].first_name%>" id="firstName">
+      <input type=text name=lastName value="<%=users[0].last_name%>" id="lastName">
+      <br>
+      Enter Current Password: 
+      <input type=password name=oldpassword placeholder="Current Password" id="oldPassword">
+      <br>
+      New Password: 
+      <input type=password name=newpassword id=newpassword placeholder="At Least 6 Characters" id="newPassword">
+      <br>
+      Confirm New Password:
+      <input type=password name=newpassword2 id=newpassword2 placeholder="Enter New Password Again" id="newPassword2">
+      <br>
+      Check Only if Admin:
+      <input type=checkbox name=isAdmin
+        <% if (users[0].is_admin == true){ %>
+          checked
+        <% } %>
+        >
+      <br>
+
+      <% if (typeof success == 'undefined'){ %>
+        <button>Submit Changes</button>
+       <% } else if (success == true) {%>
+           <p>Modification Successful. Please Return and Login. <a href="/home">Home</a></p>
+         <% } else { %>
+           <p>.</p>
+           <a href="/home">Home</a>
+           <button>Try Again</button>
+        <% } %>
+
+  </form>
+          <div id=errorMessage></div>
+
+          </div>
+
+          <input type=hidden id=password> <input type=hidden id=password2>
+          <script src="/js/validation.js"></script>
+
+<%- include('partials/footer.ejs') %>

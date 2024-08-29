@@ -1,0 +1,66 @@
+<%- include('partials/header.ejs') %>
+
+  <div class="container">
+
+  <% if (typeof success == 'undefined') { %>
+    Server timed out. Please start over. 
+    <a href="/home">
+      Go home
+    </a>
+
+  <% } else if (success == false) { %>
+    Sorry. Your user name does not match your password. Please try again. 
+    <a href="/home">
+      Go home
+    </a>
+  <% } else {%>
+  
+  <h2>Welcome 
+  <%= users[0].first_name %>
+  <!-- <%= users[0].last_name %> -->
+  </h2>
+
+
+      <p>Current score: <span id='score'>  </span></p>
+
+  <form action="/modify" method=GET>
+    <input type=hidden name=username value="<%=users[0].username%>">
+    <button>
+      Modify User
+    </button>
+  </form>
+  
+    <% if(users[0].is_admin == 1) {%>
+      <form action="/addQuestions" method="get">
+        <input type=hidden name=username value="<%=users[0].username%>">
+      <button>
+        Add Question
+      </button>
+      </form>
+    <% } %>  
+
+    <% if(remainingQuestions > 0) { %>
+      <form action="/answer" method="get">
+        <input type=hidden name=username value="<%=users[0].username%>">
+       <button>
+        Answer Question
+       </button>
+      </form>
+    <% } else { %>
+      <p>
+        You have answered all of the questions!
+      </p>
+    <% } %>
+      <% } %>
+        </div>
+
+        
+        <script>
+          window.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('/api/score/<%=users[0].username%>');
+            let data = await response.json();
+            document.querySelector("#score").innerHTML = data.score;
+          });
+        </script>
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+
+  <div class="container">
+  <h2>Add questions</h2>
+  <p>Select a category. Then uncheck any questions you don't want to add. You many want to revise other questions and answers. Then click submit to add the checked questions.</p>
+
+  <select name=category id=category>
+    <option value="-1">
+      Please Select
+    </option> 
+    <% for (var category of categories) { %>
+      <option value="<%=category.category_id%>">
+        <%= category.category_name %>
+      </option>
+    <% } %>  
+  </select>
+
+      <form action="/addQuestions" method="post" id="questions">
+      </form>
+      <div id=qMessage></div>
+
+      </div>
+      <script src="/js/questions.js"></script>
+
+<%- include('partials/footer.ejs') %>

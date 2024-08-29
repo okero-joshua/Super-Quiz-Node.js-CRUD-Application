@@ -1,0 +1,38 @@
+  <%- include('partials/header.ejs') %>
+
+  <div class="home-container">
+    <h1>Welcome to Super Quiz!</h1>
+    <p>Please create a new account or login</p>
+
+    <form action="/register" method="get">
+      <button>Create New Account</button>
+    </form>
+
+    <form action="/welcome" method="post">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button>Login</button>
+    </form>
+  </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', async () => {
+        const response = await fetch('https://picsum.photos/800/600');
+        document.body.style.backgroundImage = `url(${response.url})`;
+        document.body.style.backgroundSize = 'cover';
+      });
+    </script>
+
+    <hr>
+    <footer>
+        <span class=bold>Team 6 Group Project:</span><br>
+         Joshua Okero, Thomas Wood, Tyler Poyer, and Zachary Davis. 2024
+     </footer>
+    </body>
+    </html>

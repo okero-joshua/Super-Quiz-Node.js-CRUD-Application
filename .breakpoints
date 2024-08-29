@@ -1,0 +1,42 @@
+{
+  "files": {
+    "index.js": [
+      {
+        "id": "ec4d6260-2022-4364-ba35-b7a2924dbfc3",
+        "line": 30,
+        "version": 9124,
+        "index": 639
+      },
+      {
+        "id": "14cf1aac-8f6a-4275-bf9f-4d360798d267",
+        "line": 114,
+        "version": 9124,
+        "index": 3256
+      },
+      {
+        "id": "63151dfc-e355-4e25-a34d-3dd24e49c214",
+        "line": 114,
+        "version": 9124,
+        "index": 3256
+      },
+      {
+        "id": "c10ad73b-fa6b-4b3a-862b-8a92b103c3e9",
+        "line": 119,
+        "version": 9124,
+        "index": 3468
+      },
+      {
+        "id": "7d39be7a-4709-4ef3-8495-1bcaabc19f28",
+        "line": 196,
+        "version": 9124,
+        "index": 7084
+      },
+      {
+        "id": "3c56a178-6477-40d3-8adc-9a89607e7d2c",
+        "line": 247,
+        "version": 9124,
+        "index": 9171
+      }
+    ]
+  }
+}

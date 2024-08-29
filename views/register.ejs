@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+
+  <div class="container">
+    <h1>Create a New Account</h1>
+    <div id=errorMessage></div>
+    <p><a href="/home">Home</a></p>
+
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <label for="firstName">Name:</label>
+        <input type="text" name="firstName" placeholder="First Name" id="firstName">
+        <input type="text" name="lastName" placeholder="Last Name" id="lastName">
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="User Name" id="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="At Least 6 Characters" id="password">
+      </div>
+      <div class="form-group">
+        <label for="password2">Confirm Password:</label>
+        <input type="password" name="password2" placeholder="Enter Password Again" id="password2">
+      </div>
+      <div class="form-group">
+        <label for="isAdmin">Check only if admin:</label>
+        <input type="checkbox" name="isAdmin" id="isAdmin">
+      </div>
+
+      <% if (typeof success == 'undefined'){ %>
+        <button type="submit">Register</button>
+      <% } else if (success == true) { %>
+        <p>Registration Successful. Please Return and Login. <a href="/home">Home</a></p>
+      <% } else { %>
+        <p>Registration Failed. Please Try Again.</p>
+        <button type="submit">Try Again</button>
+      <% } %>
+    </form>
+
+        
+        </div>
+        
+        <script src="/js/validation.js"></script>
+<%- include('partials/footer.ejs') %>
